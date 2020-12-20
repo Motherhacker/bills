@@ -9,32 +9,60 @@ class BillList extends React.Component {
   }
 
   renderList() {
-    return this.props.bills.map((bill) => {
+    const renderedRows = this.props.bills.map((bill) => {
       return (
-        <div className="item" key={bill.id}>
-          <i className="large middle aligned icon camera" />
-          <div className="content">
+        <tr key={bill.id}>
+          <td className="single line">&nbsp;</td>
+          <td className="single line">
             <Link to={`/bills/${bill.id}`} className="header">
               {bill.company}
             </Link>
-            <div className="description">{bill.amount}</div>
+          </td>
+          <td className="single line">{bill.amount}</td>
+          <td className="single line">{bill.payed ? "yes" : "no"}</td>
+          <td className="single line">
+            <Link to={`/bills/edit/${bill.id}`} className="ui button primary">
+              Edit
+            </Link>
             <button
               className="ui button"
               onClick={() => this.props.deleteBill(bill.id)}
             >
               Delete
             </button>
-          </div>
-        </div>
+          </td>
+        </tr>
       );
     });
+    return (
+      <table className="ui celled padded table">
+        <thead>
+          <tr>
+            <th className="single line">Date</th>
+            <th>Company</th>
+            <th>Amount</th>
+            <th>Payed</th>
+            <th>Controls</th>
+          </tr>
+        </thead>
+        <tbody>{renderedRows}</tbody>
+      </table>
+    );
   }
 
   render() {
+    const addButton = this.props.isSignedIn ? (
+      <Link to="/add">
+        <button className="ui primary button">Add bill</button>
+      </Link>
+    ) : (
+      ""
+    );
+
     return (
       <div>
-        <h2>Bills</h2>
         <div className="ui celled list">{this.renderList()}</div>
+        {addButton}
       </div>
     );
   }

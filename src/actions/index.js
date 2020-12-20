@@ -1,4 +1,5 @@
 import bills from "../apis/bills";
+import history from "../history";
 import {
   SIGN_IN,
   SIGN_OUT,
@@ -6,6 +7,7 @@ import {
   FETCH_BILLS,
   FETCH_BILL,
   DELETE_BILL,
+  EDIT_BILL,
 } from "./types";
 
 export const signIn = (userId) => {
@@ -26,12 +28,24 @@ export const createBill = (formValues) => async (dispatch, getState) => {
   const response = await bills.post("/bills", { ...formValues, userId });
 
   dispatch({ type: CREATE_BILL, payload: response.data });
+  history.push("/");
 };
 
-export const fetchBills = () => async (dispatch) => {
+export const editBill = (id, formValues) => async (dispatch) => {
+  const response = await bills.patch(`/bills/${id}`, formValues);
+
+  dispatch({ type: EDIT_BILL, payload: response.data });
+  history.push("/");
+};
+
+export const fetchBills = () => async (dispatch, getState) => {
+  const { userId } = getState().auth;
   const response = await bills.get("/bills");
 
-  dispatch({ type: FETCH_BILLS, payload: response.data });
+  dispatch({
+    type: FETCH_BILLS,
+    payload: response.data.filter((bill) => bill.userId === userId),
+  });
 };
 
 export const fetchBill = (id) => async (dispatch) => {

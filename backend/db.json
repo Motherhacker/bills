@@ -1,18 +1,25 @@
 {
   "bills": [
     {
-      "payed": true,
-      "company": "Voda",
-      "amount": "400",
+      "company": "Vodafone",
+      "amount": "100",
+      "payed": false,
       "userId": "103416543790670479171",
-      "id": 1
+      "id": 3
     },
     {
-      "company": "ELMÜ",
-      "amount": "20000",
+      "company": "ELMÜ-ÉMÁSZ",
+      "amount": "10010",
       "payed": true,
+      "userId": "111489911057743486721",
+      "id": 4
+    },
+    {
+      "company": "Borsodvíz",
+      "amount": "20000",
       "userId": "103416543790670479171",
-      "id": 2
+      "id": 5,
+      "payed": true
     }
   ]
 }
