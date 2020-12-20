@@ -1,0 +1,18 @@
+{
+  "bills": [
+    {
+      "payed": true,
+      "company": "Voda",
+      "amount": "400",
+      "userId": "103416543790670479171",
+      "id": 1
+    },
+    {
+      "company": "ELMÜ",
+      "amount": "20000",
+      "payed": true,
+      "userId": "103416543790670479171",
+      "id": 2
+    }
+  ]
+}

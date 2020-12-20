@@ -2,6 +2,7 @@ import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
 import Header from "./Header";
 import Content from "./Content";
+import ShowBill from "./bills/ShowBill";
 import history from "../history";
 
 const App = () => {
@@ -12,6 +13,7 @@ const App = () => {
           <Header />
           <Switch>
             <Route path="/" exact component={Content} />
+            <Route path="/bills/:id" exact component={ShowBill} />
           </Switch>
         </div>
       </Router>
