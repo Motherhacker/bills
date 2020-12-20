@@ -41,7 +41,7 @@ export const fetchBill = (id) => async (dispatch) => {
 };
 
 export const deleteBill = (id) => async (dispatch) => {
-  const response = await bills.delete(`/bills/${id}`);
+  await bills.delete(`/bills/${id}`);
 
   dispatch({ type: DELETE_BILL, payload: id });
 };

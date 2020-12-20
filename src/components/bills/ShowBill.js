@@ -3,10 +3,6 @@ import { connect } from "react-redux";
 import { fetchBill } from "../../actions";
 
 class ShowBill extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     const { id } = this.props.match.params;
 
@@ -22,7 +18,7 @@ class ShowBill extends React.Component {
 
     return (
       <div>
-        {id} {company} {amount} {payed ? "true" : "false"}
+        {id} {company} {amount} {payed ? "true" : "false"} {userId}
       </div>
     );
   }
